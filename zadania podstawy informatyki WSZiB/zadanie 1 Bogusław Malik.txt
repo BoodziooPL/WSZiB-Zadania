@@ -1,0 +1,5 @@
+﻿1GHz = 1 000 000 000 cykli zegara/s (hertzy)
+1 Hz = 1 cykl zegara/s (hertz)
+
+Nasz super wolny komputer będzie wolniejszy o 3 200 000 000 cykli zegara, więc będzie potrzebował  3 200 000 000 sekund aby obliczyć to co porównywany procesor wykona w jedną sekundę.
+
