@@ -1,6 +1,6 @@
 ---
 title: "Statystyka"
-author: ""
+author: "Bogusław Malik"
 date: "2023-11-19"
 output: 
     html_document:
@@ -141,11 +141,19 @@ boxplot(d,col = "lightblue",border="red",horizontal = T)
 
 ## Estymacja przedziałowa
 
-1. Przedział ufności dla średniej
-
-```{r}
-# przedział ufności dla średniej d
-
+```# Długość próby : 
+n<-length(d)
+# Wartość średnia :
+m.cena<-mean(d)
+# Wartość odchylenia standardowego (nieznana - wyznaczona z próby): 
+s<-sd(d,na.rm=TRUE)
+# Błąd :
+b <- 700
+# Kwantyl rozkładu:
+e<-qt(1-0.05/2,df=n-1)
+# Wyznaczona liczność :
+(licz<- e^2*s^2/(b^2));
+n
 ```
 
 2. Minimalna liczebność próby (dla średniej)
