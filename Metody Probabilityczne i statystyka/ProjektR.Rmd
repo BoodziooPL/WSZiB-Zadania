@@ -1,0 +1,165 @@
+---
+title: "Statystyka"
+author: ""
+date: "2023-11-19"
+output: 
+    html_document:
+      css: mystyle.css
+      logo: logo.PNG
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Wykorzystanie stylów
+
+  - Cytowanie 1
+  
+<div class="cited">
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see: [^1]
+
+</div>
+
+<http://rmarkdown.rstudio.com>.
+
+  - Cytowanie 2 
+
+>When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.[^2]
+
+[^1]: Strona RMarkdown
+[^2]: Inna literatura
+
+## Elementy wstawiane
+
+- Tekst  
+`plot(dane)`  
+Pogrubienie: **Bold** <b>Bold</b> 
+Kursywa: *Italic* <i>Italic</i>
+
+- Rysunek 
+![](rlogo.png){width=20%}
+- Linki do strony  
+Czytelne  : <https://www.wszib.edu.pl/>  
+Ukryte  : [WSZIB](https://www.wszib.edu.pl/)  
+
+## kody R'owskie
+
+- Polecenie i wynik działania
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+- Sam wynik
+
+```{r}
+mean(cars$speed, na.rm = TRUE)
+sd(cars$speed)
+
+```
+
+- Polecenie bez wyniku działania
+
+```{r echo = TRUE, eval=FALSE}
+mean(cars$dist, na.rm = TRUE)
+sd(cars$dist)
+
+```
+
+- Polecenia w tekście
+
+Dzisiaj  czyli: `r Sys.Date()` mamy tworzenie prezentacjiw RMarkdown.
+Moge policzyć średnią `r mean(cars$dist)`
+
+## Opis danych
+
+  Opis wybranych danych, zródło, podanie wstępne ile jest danych i jakiego typu dane.
+  
+  Od 100 do 500 
+  
+```{r pressure}
+plot(pressure)
+```
+
+## Wczytanie danych
+
+Dane ‘Wholesale customers’ UCI Machine Learning Repository
+
+readxl - wczytywanie danych z Excela
+Dane zapisać na dysku "H:\pub "
+
+```{r}
+dane<-read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/00292/Wholesale%20customers%20data.csv")
+head(dane)
+```
+
+## Statystki opisowe
+
+```{r}
+d<-dane$Grocery
+mean(d, na.rm=TRUE)
+median(d)
+quantile(d)
+
+sd(d)
+mad(d)
+
+# błąd średniej
+# współczynnik zmienności
+```
+WNIOSKI :)
+
+## wykresy | Liniowy
+
+## Statystki opisowe
+
+```{r}
+plot(d, type="b",xlab = "", ylab ="wydatki", main = "Zakres wydatków", lty=1, lwd = 3, col="red", pch=15 ) 
+```
+
+## wykresy | histogram
+
+## Statystki opisowe
+
+```{r}
+  hist(d,breaks=7,probability=T,col=rainbow(17),ylab="", main="Histogram Grocery")
+rug(d, col="red")
+# dorysowanie gestosci empirycznej
+lines(density(d),lty=2, lwd =3, col="blue")
+# dorysowanie gęstości teoretycznej
+curve(dnorm(x, mean = mean(d), sd =sd(d)) , add=T , col="darkgreen", lty=3, lwd =3)
+
+```
+
+## Wykresy | ramka z wąsami
+
+```{r}
+boxplot(d,col = "lightblue",border="red",horizontal = T)
+```
+
+## Estymacja przedziałowa
+
+1. Przedział ufności dla średniej
+
+```{r}
+# przedział ufności dla średniej d
+
+```
+
+2. Minimalna liczebność próby (dla średniej)
+
+## Hipotezy parametryczne
+
+testowanie hipotezy o średniej lub porównanie dwóch średnich
+
+## Hipotezy nieparametryczne
+
+testowanie normalności rozkładu
+
+## Analiza wariancji 
+
+Test z analizy wariancji 
+
+CZAS NA WYKONANIE PREZENTACJI - Do KOŃCA SEMESTRU
